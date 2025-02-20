@@ -15,7 +15,8 @@ const maxCrawlLength = 5;
 const axiosInstance = axios.create();
 
 
-const targetUrl = "https://en.wikipedia.org/wiki/Civilization";
+const targetUrl = "https://en.wikipedia.org/wiki/Military_history"
+// const targetUrl = ["https://en.wikipedia.org/wiki/Civilization", "https://en.wikipedia.org/wiki/History", "https://en.wikipedia.org/wiki/Ancient_history", "https://en.wikipedia.org/wiki/Military_history"];
 let urlToVisit = [targetUrl];
 const linkData = [];
 
@@ -43,7 +44,7 @@ const crawler = async () => {
                 }
                 
                 // Restrict to Wikipedia domain
-                if (url.startsWith("https://en.wikipedia.org/wiki/") && !url.includes("#") && !url.includes("Portal:Current_events/") && !url.includes("Category:") && !url.includes("Special:") && !urlToVisit.includes(url)) {
+                if (url.startsWith("https://en.wikipedia.org/wiki/") && !url.includes("#") && !url.includes("Portal:Current_events/") && !url.includes("Category:") && !url.includes("Special:") && !url.includes("Help:") && !url.includes("Wikipedia:") && !url.includes("User:") && !url.includes("Wikipedia_talk:") &&!urlToVisit.includes(url)) {
                     urlToVisit.push(url);
                 }
             });
