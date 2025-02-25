@@ -50,7 +50,6 @@ if (newDocument.length > 0) {
     this.ref("url");
     this.field("title");
     this.field("content");
-    this.bm25();
 
     newDocument.forEach((doc) => this.add(doc));
   });
