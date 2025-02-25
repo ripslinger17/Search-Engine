@@ -72,4 +72,4 @@ function search(query) {
 }
 
 // Example usage
-search("sex");
+// search("chelsea");
