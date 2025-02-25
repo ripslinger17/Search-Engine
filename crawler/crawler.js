@@ -45,7 +45,7 @@ for(let i = 0; i < targetUrl.length; i++)
                     }
                     
                     // Restrict to Wikipedia domain
-                    if (url.startsWith("https://en.wikipedia.org/wiki/") && !url.includes("#") && !url.includes("Portal:") && !url.includes("Category:") && !url.includes("Special:") && !url.includes("Help:") && !url.includes("Wikipedia:") && !url.includes("User:") && !url.includes("Wikipedia_talk:") && !url.includes("User_talk:") && !url.includes("Wikipedia:Manual_of_Style") && !url.includes("Talk:") && !url.includes("Template_talk:") && !url.includes("Main_Page") && !urlToVisit.includes(url)) {
+                    if (url.startsWith("https://en.wikipedia.org/wiki/") && !url.includes("#") && !url.includes("Portal:") && !url.includes("Category:") && !url.includes("Special:") && !url.includes("Help:") && !url.includes("Wikipedia:") && !url.includes("User:") && !url.includes("Wikipedia_talk:") && !url.includes("User_talk:") && !url.includes("Wikipedia:Manual_of_Style") && !url.includes("Talk:") && !url.includes("Template_talk:") && !url.includes("Main_Page") && !url.includes("File:") && !url.includes("Template:") && !urlToVisit.includes(url)) {
                         urlToVisit.push(url);
                         linkData.add(url);
                     }

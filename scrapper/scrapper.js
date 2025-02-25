@@ -51,7 +51,7 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
         const pageSourceHTML = await page.content(); // load all the page content
 
         const fileName = `page_${i}.html`; // filename to save with
-        const filePath = join(__dirname + "/data/html/" + fileName); // path to save at
+        const filePath = path.join(__dirname + "/data/html/" + fileName); // path to save at
 
         console.log("Saving at : " + filePath);
         console.log(`Attempting ${link}` );
