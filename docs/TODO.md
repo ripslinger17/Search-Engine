@@ -7,5 +7,6 @@
 - [x] Create a database
 - [x] Create a indexer
 - [ ] Create a search query system
-      - [ ] Implement Ranking
-- [ ] Build a UI
+      - [x] Implement Ranking
+- [x] Build a UI
+- [ ] Add AI (Google Gemini)

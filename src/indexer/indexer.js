@@ -12,7 +12,7 @@ const indexFilePath = "./index.json";
 const metadataFilePath = "./indexed_files.json";
 
 // Load previously indexed file metadata
-let indexedFiles = existsSync(metadataFilePath)? JSON.parse(readFileSync(metadataFilePath, "utf8")) : {};
+let indexedFiles = existsSync(metadataFilePath) ? JSON.parse(readFileSync(metadataFilePath, "utf8")) : {};
 
 const files = readdirSync(folderPath).filter((file) => file.endsWith(".html"));
 let newDocument = [];
@@ -24,8 +24,7 @@ for (let file of files) {
     const lastModified = fileStat.mtimeMs; // Get file modification time
 
     // Skip file if it hasn't changed
-    if (indexedFiles[file] && indexedFiles[file] === lastModified) {
-      // console.log(`Skipping already indexed: ${file}`);
+    if (indexedFiles[file] && indexedFiles[file].lastModified === lastModified) {
       continue;
     }
 
@@ -38,8 +37,8 @@ for (let file of files) {
 
     newDocument.push({ url: file, title, content });
 
-    // Update metadata for indexed files
-    indexedFiles[file] = lastModified;
+    // Store both lastModified and title in metadata
+    indexedFiles[file] = { lastModified, title };
   } catch (error) {
     console.error(`Skipping ${file}: ${error.message}`);
   }
