@@ -5,7 +5,10 @@ This project is a fully functional search engine developed as a Major College Pr
 ---
 ## Index
 - [Information](#information)
+  - [Development Environment](#development-environment)
   - [Technologies Used](#technologies-used)
+  - [Project Digraram](#project-digraram)
+
 - [Installation](#installation)
   - [Prerequisites](#prerequisites)
   - [Running the Project](#running-the-project)
