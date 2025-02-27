@@ -1,0 +1,204 @@
+{
+	"info": {
+		"_postman_id": "6c78d635-07ca-47db-b767-e3d0670e3efa",
+		"name": "Search Enigne API",
+		"description": "## API Collection: Search Engine API\n\n### Overview\n\nThis API provides a set of backend services for searching files, querying AI responses, fetching images, retrieving weather data, and fetching news articles. It is designed to be lightweight, efficient, and easy to integrate into various applications.\n\n> This is a part of the project made for Major College Project. Project was about Search Engine. Expect some unexpected behaviour. \n  \n\n### Features\n\n- **File Search**: Retrieve indexed documents based on a query.\n    \n- **AI-powered Answers**: Ask questions and get responses from _Google Gemini AI_.\n    \n- **Image Search**: Fetch high-quality images from _Unsplash_.\n    \n- **Weather Data**: Get real-time weather updates by location with the help of _Weather API_.\n    \n- **News Aggregation**: Find relevant news articles based on a topic with the help of _News API_.\n    \n\n### Usage\n\n- _No authentication_ is required.\n    \n- Rate limits: **10 requests per minute** per endpoint.\n    \n- _Caching_ is enabled for optimised performance.\n    \n\n### Rate Limiting\n\n- Each endpoint is limited to **10 requests per minute**.\n    \n- If the limit is exceeded, the response will be:\n    \n\n``` json\n\"error\" : \"Too many requests, please try again later.\"\n\n ```\n\n### Caching\n\n- Redis caching is used for `/search` , `/search-images` , `/weather` , and `/news` endopoints.\n    \n- Cached data expires every **30 minutes**.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27350193"
+	},
+	"item": [
+		{
+			"name": "Search",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/search?query={anything}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "{anything}"
+						}
+					]
+				},
+				"description": "Searches for files based on the query parameter. Replace \"{anything}\" with whatever you want to search.\n\n- Example query : `http://localhost:3000/search?query=chelsea`"
+			},
+			"response": []
+		},
+		{
+			"name": "News",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/news?query={anything}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"news"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "{anything}"
+						}
+					]
+				},
+				"description": "Fetches news articles based on a search query. Replace \"{anything}\" with whatever you want to search.\n\n- Example query : `http://localhost:3000/news?query=sports`"
+			},
+			"response": []
+		},
+		{
+			"name": "Weather",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/weather?lat={anythingX}&lon={anythingY}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"weather"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "{anythingX}"
+						},
+						{
+							"key": "lon",
+							"value": "{anythingY}"
+						},
+						{
+							"key": "city",
+							"value": "mumbai",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Fetches weather data based on coordinates or city name. Replace \"{anythingX} && {anythingY}\" with whatever you want to search.\n\n- Example query : `http://localhost:3000/weather?lat=23.0225&lon=72.5714`\n    \n- Example query : `http://localhost:3000/weather?city=mumbai`"
+			},
+			"response": []
+		},
+		{
+			"name": "Image Search",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/search-images?query={anything}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"search-images"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "{anything}"
+						}
+					]
+				},
+				"description": "Fetches images from Unsplash based on a search query. Replace \"{anything}\" with whatever you want to search.\n\n- Example query : `http://localhost:3000/search-images?query=Bike`"
+			},
+			"response": []
+		},
+		{
+			"name": "AI Chat",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"question\": \"What is AI?\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/ask-ai?question=What is AI?",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"ask-ai"
+					],
+					"query": [
+						{
+							"key": "question",
+							"value": "What is AI?"
+						}
+					]
+				},
+				"description": "Sends a question to Google Gemini AI and returns an answer. Replace \"{anything}\" with whatever you want to search."
+			},
+			"response": []
+		},
+		{
+			"name": "Access Static Files",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/files/{filename}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"files",
+						"{filename}"
+					]
+				},
+				"description": "Fetches the file which is hosted at `/files`. Replace \"{filename}\" with whatever you have hosted on the search.\n\n- Example query : `http://localhost:3000/files/page_0.html`"
+			},
+			"response": []
+		}
+	]
+}
